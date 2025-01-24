@@ -4,6 +4,8 @@
 //   );
 // }
 
+// import { useState } from "react";
+
 // export default App;
 
 // functional components
@@ -421,4 +423,282 @@
 
 // export default App;
 
+// STATE
 
+// import { useState } from "react";
+
+// const Counter = () => {
+//   const [count, setCount] = useState(0);
+//   const increment = () => {
+//     setCount(count + 1);
+//   };
+//   const decrement = () => {
+//     setCount(count - 1);
+//   };
+//   return (
+//     <>
+//       <button onClick={decrement}>-</button>
+//       <h1>{count}</h1>
+//       <button onClick={increment}>+</button>
+//     </>
+//   );
+// };
+
+// function App() {
+//   return (
+//     <>
+//       <Counter />
+//     </>
+//   );
+// }
+
+// export default App;
+
+// to change string data in the state
+
+// import { useState } from "react";
+
+// const Name = () => {
+//   const [username, setUsername] = useState("Unknown");
+//   const changeName = () => {
+//     setUsername("Praveen");
+//   };
+//   return (
+//     <>
+//       <h1>{username}</h1>
+//       <button onClick={changeName}>Change Name</button>
+//     </>
+//   );
+// };
+
+// function App() {
+//   return (
+//     <>
+//       <Name />
+//     </>
+//   );
+// }
+
+// export default App;
+
+// to change array data in the state
+
+// import { useState } from "react";
+
+// function App() {
+//   const [friends, setFriends] = useState(["Alex", "Bob"]);
+
+//   const addOne = () => {
+//     setFriends([...friends, "Praveen"]);
+//   };
+
+//   const deleteOne = () => {
+//     setFriends(friends.filter((f) => f !== "Praveen"));
+//   };
+
+//   const updateOne = () => {
+//     setFriends(friends.map((f) => (f === "Alex" ? "Alex Smith" : f)));
+//   };
+
+//   return (
+//     <>
+//       {friends.map((friend) => (
+//         <li key={Math.random()}>{friend}</li>
+//       ))}
+
+//       <button onClick={addOne}>Add One</button>
+//       <button onClick={deleteOne}>Remove One</button>
+//       <button onClick={updateOne}>Update One</button>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// import { useState } from "react";
+
+// function App() {
+//   const [movie, setMovie] = useState({
+//     title: "Salaar",
+//     ratings: 9,
+//   });
+
+//   const handleChange = () => {
+//     // const copyMovie = {
+//     //   ...movie,
+//     //   ratings: 9.5,
+//     // };
+//     // setMovie(copyMovie);
+//     setMovie({ ...movie, ratings: 9.5 });
+//   };
+
+//   return (
+//     <>
+//       <h1>{movie.title}</h1>
+//       <p>{movie.ratings}</p>
+//       <button onClick={handleChange}>Change Rating</button>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// import { useState } from "react";
+
+// function App() {
+//   const [movies, setMovies] = useState([
+//     { id: 1, title: "Spiderman", ratings: 3 },
+//     { id: 2, title: "Superman", ratings: 6 },
+//   ]);
+
+//   const handleClick = () => {
+//     setMovies(
+//       movies.map((m) => (m.id === 1 ? { ...movies, title: "John Wick 4" } : m))
+//     );
+//   };
+
+//   return (
+//     <>
+//       {movies.map((movie) => (
+//         <li key={Math.random()}>{movie.title}</li>
+//       ))}
+//       <button onClick={handleClick}>Change Name</button>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// FORMS
+
+// import { useState } from "react";
+
+// function App() {
+//   const [username, setUsername] = useState("");
+
+//   const handleChange = (e) => {
+//     setUsername(e.target.value);
+//     // console.log(e.target.value);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     alert(`You Typed: ${username}`);
+//     setUsername("");
+//     // console.log(username);
+//   };
+
+//   return (
+//     <>
+//       <h1>Form Demo</h1>
+//       <form onSubmit={handleSubmit}>
+//         <input type="text" value={username} onChange={handleChange} />
+//         <button>Submit</button>
+//       </form>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// useEffect() hook
+
+// import { useEffect, useState } from "react";
+
+// function App() {
+//   const [value, setValue] = useState(0);
+
+//   // const handleClick = () => {
+//   //   setValue(value + 1)
+//   // }
+//   // return (
+//   //   <>
+//   //     <h1>{value}</h1>
+//   //     <button onClick={handleClick} >Click Me</button>
+//   //   </>
+//   // )
+
+//   // 1. Render for the (first time)
+//   // 2. Anytime we do (side effect)
+//   // if we want to call a useEffect conditionally then we have to wrap the condition inside the useEffect()
+//   // 3. Dependancy List/array
+//   useEffect(() => {
+//     console.log("Hello");
+//     document.title = `Increment (${value})`;
+//   }, []); // if we use the empty array dependancy then this useEffect() will run only once. but if we give any other value inside the array then this useEffect() hook will run whenever the passed dependancy changes.
+//   return (
+//     <>
+//       <h1>{value}</h1>
+//       <button onClick={() => setValue(value + 1)}>Click Me</button>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// import { useEffect, useState } from "react";
+
+// function App() {
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     async function getData() {
+//       const response = await fetch(
+//         "https://jsonplaceholder.typicode.com/posts"
+//       );
+//       const data = await response.json();
+//       if (data && data.length) setData(data);
+//     }
+
+//     getData();
+//   }, []);
+
+//   return (
+//     <>
+//       <ul>
+//         {data.map((item) => (
+//           <li key={Math.random()}>{item.title}</li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// prop drilling
+
+// import A from "./components/A";
+
+// function App() {
+//   const name = "Praveen";
+//   return (
+//     <>
+//       <A name={name} />
+//     </>
+//   );
+// }
+
+// export default App;
+
+// COntext API
+
+// 1. Import (createContext)
+import { createContext } from "react";
+import C from "./components/C"
+
+// 2. Creating instance of (createContext)
+export const Data = createContext();
+
+function App() {
+  const name = "Praveen"
+  return (
+  <>
+    <Data.Provider value={name} >
+      <C/>
+    </Data.Provider>
+  </>
+  );
+}
+
+export default App;
