@@ -681,24 +681,134 @@
 
 // export default App;
 
-// COntext API
+// Context API
 
 // 1. Import (createContext)
-import { createContext } from "react";
-import C from "./components/C"
+// import { createContext } from "react";
+// import C from "./components/C"
 
-// 2. Creating instance of (createContext)
-export const Data = createContext();
+// // 2. Creating instance of (createContext)
+// export const Data = createContext();
 
-function App() {
-  const name = "Praveen"
-  return (
-  <>
-    <Data.Provider value={name} >
-      <C/>
-    </Data.Provider>
-  </>
-  );
-}
+// function App() {
+//   const name = "Praveen"
+//   return (
+//   <>
+//     <Data.Provider value={name} >
+//       <C/>
+//     </Data.Provider>
+//   </>
+//   );
+// }
 
-export default App;
+// export default App;
+
+// import { createContext } from "react";
+// import C from "./components/C";
+
+// // 2. Creating instance of (createContext)
+// export const Data = createContext();
+// export const Data1 = createContext();
+
+// function App() {
+//   const name = "Praveen";
+//   const age = 18;
+//   return (
+//     <>
+//       <Data.Provider value={name}>
+//         <Data1.Provider value={age}>
+//           <C />
+//         </Data1.Provider>
+//       </Data.Provider>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// USE REDUCER
+
+// import { useReducer } from "react";
+
+// // state:
+// // dispatch: [value, setValue]
+
+// // reducer: custom state logic
+// // initialState: {}
+
+// const App = () => {
+//   const [state, dispatch] = useReducer(reducer, initialState);
+//   return (
+//     <>
+//       <h1>{state.count}</h1>
+//       <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+//       <button onClick={() => dispatch({ type: "increment" })}>+</button>
+//       <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+//     </>
+//   );
+// };
+
+// const initialState = { count: 0 };
+
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "increment":
+//       return {
+//         ...state,
+//         count: state.count + 1,
+//       };
+//     case "decrement":
+//       return {
+//         ...state,
+//         count: state.count - 1,
+//       };
+//     case "reset":
+//       return {
+//         ...state,
+//         count: 0,
+//       };
+
+//     default:
+//       return state;
+//   }
+// };
+
+// export default App;
+
+// USE REF
+
+// import { useRef } from "react";
+
+// const App = () => {
+//   const inputElement = useRef(null);
+
+//   const focusInput = () => {
+//     inputElement.current.focus();
+//     inputElement.current.value = "Praveen";
+//   };
+
+//   return (
+//     <>
+//       <input type="text" ref={inputElement} />
+//       <button onClick={() => focusInput()}>Focus & Write Praveen</button>
+//     </>
+//   );
+// };
+
+// export default App;
+
+// CUSTOM HOOKS
+
+// import useFetch from "./useFetch";
+
+// const App = () => {
+//   const [data] = useFetch("https://jsonplaceholder.typicode.com/todos")
+
+//   return <>
+//     {data && data.map (item => {
+//       return <p key={item.id} >{item.title}</p>
+//     })}
+//   </>;
+// };
+
+// export default App;
